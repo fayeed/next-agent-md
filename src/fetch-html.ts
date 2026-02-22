@@ -13,10 +13,6 @@ export async function fetchPageHtml(
   skipHeader: string
 ): Promise<string | null> {
   const targetUrl = new URL(request.url)
-
-  // Remove ?markdown=1 so the internal fetch doesn't re-trigger markdown detection
-  targetUrl.searchParams.delete('markdown')
-
   const forwardHeaders = new Headers()
 
   // Forward session/auth cookies so protected pages render correctly
