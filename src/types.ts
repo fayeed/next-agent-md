@@ -1,11 +1,7 @@
-import type { NextRequest, NextFetchEvent, NextResponse } from 'next/server'
-
-export type NextMiddlewareResult = NextResponse | Response | undefined | null
-
-export type NextMiddleware = (
-  request: NextRequest,
-  event: NextFetchEvent
-) => NextMiddlewareResult | Promise<NextMiddlewareResult>
+// Use loose types for request/event/result so the package stays compatible
+// across Next.js versions (Next.js 15, 16, etc.) without type conflicts.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type NextMiddleware = (request: any, event: any) => any
 
 export interface ContentSignalOptions {
   /** Allow AI systems to use this content for training. @default true */

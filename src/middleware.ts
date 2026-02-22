@@ -69,10 +69,18 @@ async function fetchPrebuiltMarkdown(
  * import { myAuthMiddleware } from './lib/auth'
  * export default withMarkdownForAgents(myAuthMiddleware, { varyHeader: true })
  */
+export function withMarkdownForAgents(options?: MarkdownAgentsOptions): NextMiddleware
+export function withMarkdownForAgents(middleware: NextMiddleware, options?: MarkdownAgentsOptions): NextMiddleware
 export function withMarkdownForAgents(
-  middleware?: NextMiddleware,
+  middlewareOrOptions?: NextMiddleware | MarkdownAgentsOptions,
   options: MarkdownAgentsOptions = {}
 ): NextMiddleware {
+  let middleware: NextMiddleware | undefined
+  if (typeof middlewareOrOptions === 'function') {
+    middleware = middlewareOrOptions
+  } else if (middlewareOrOptions !== undefined) {
+    options = middlewareOrOptions
+  }
   const {
     skipHeader = DEFAULT_SKIP_HEADER,
     varyHeader = true,
