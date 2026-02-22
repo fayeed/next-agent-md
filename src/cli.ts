@@ -35,20 +35,35 @@ export const config = {
 }
 `
 
+function detectNextVersion(cwd: string): number {
+  try {
+    const pkg = JSON.parse(fs.readFileSync(path.join(cwd, 'package.json'), 'utf8'))
+    const version: string = pkg.dependencies?.next ?? pkg.devDependencies?.next ?? ''
+    const major = parseInt(version.replace(/[^0-9]/, ''), 10)
+    return isNaN(major) ? 15 : major
+  } catch {
+    return 15
+  }
+}
+
 function runInit(): void {
   const cwd = process.cwd()
+  const nextMajor = detectNextVersion(cwd)
+
+  // Next.js 16+ uses proxy.ts; older versions use middleware.ts
+  const filename = nextMajor >= 16 ? 'proxy.ts' : 'middleware.ts'
 
   const useSrcDir = fs.existsSync(path.join(cwd, 'src'))
   const targetDir = useSrcDir ? path.join(cwd, 'src') : cwd
-  const targetFile = path.join(targetDir, 'middleware.ts')
-  const displayPath = useSrcDir ? 'src/middleware.ts' : 'middleware.ts'
+  const targetFile = path.join(targetDir, filename)
+  const displayPath = useSrcDir ? `src/${filename}` : filename
 
   const existing = [
-    path.join(cwd, 'middleware.ts'),
-    path.join(cwd, 'middleware.js'),
-    path.join(cwd, 'src', 'middleware.ts'),
-    path.join(cwd, 'src', 'middleware.js'),
-  ].find((f) => fs.existsSync(f))
+    'proxy.ts', 'proxy.js',
+    'middleware.ts', 'middleware.js',
+    path.join('src', 'proxy.ts'), path.join('src', 'proxy.js'),
+    path.join('src', 'middleware.ts'), path.join('src', 'middleware.js'),
+  ].map(f => path.join(cwd, f)).find((f) => fs.existsSync(f))
 
   if (existing) {
     const rel = path.relative(cwd, existing)
@@ -68,7 +83,6 @@ function runInit(): void {
       '  AI agents can now request Markdown from any page:',
       '',
       '    \x1b[36mcurl -H "Accept: text/markdown" http://localhost:3000/\x1b[0m',
-      '    \x1b[36mcurl "http://localhost:3000/?markdown=1"\x1b[0m',
       '',
       '  Optional — also add the config plugin to next.config.ts:',
       '',
