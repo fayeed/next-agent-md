@@ -1,7 +1,12 @@
 {
   "name": "next-agent-md",
   "version": "0.1.0",
-  "description": "Next.js Edge Middleware that serves Markdown to AI agents — brings the Cloudflare Markdown for Agents pattern to any Next.js app",
+  "description": "Next.js Edge Middleware that serves Markdown to AI agents, brings the Cloudflare Markdown for Agents pattern to any Next.js app",
+  "author": "Fayeed <fayeed@live.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fayeed/next-agent-md"
+  },
   "keywords": [
     "nextjs",
     "middleware",
