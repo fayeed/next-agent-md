@@ -16,6 +16,9 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "next-agent-md": "./dist/cli.cjs"
+  },
   "exports": {
     ".": {
       "import": {
@@ -25,6 +28,16 @@
       "require": {
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
+      }
+    },
+    "./config": {
+      "import": {
+        "types": "./dist/config-plugin.d.ts",
+        "default": "./dist/config-plugin.js"
+      },
+      "require": {
+        "types": "./dist/config-plugin.d.cts",
+        "default": "./dist/config-plugin.cjs"
       }
     }
   },
