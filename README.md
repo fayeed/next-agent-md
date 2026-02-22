@@ -18,11 +18,31 @@ The fastest way to get started:
 npx next-agent-md init
 ```
 
-This scaffolds a `middleware.ts` (or `src/middleware.ts`) in your project. That's it.
+This scaffolds the correct file for your Next.js version and that's it.
+
+> **Next.js version note**
+> Next.js 16+ renamed the middleware file convention from `middleware.ts` to `proxy.ts`.
+> The `init` command detects your version automatically and creates the right file.
+> All code examples below use `proxy.ts` — replace with `middleware.ts` if you're on Next.js ≤ 15.
 
 ## Manual setup
 
-### 1. Add middleware
+### 1. Add the proxy/middleware file
+
+**Next.js 16+** (`proxy.ts`):
+
+```ts
+// proxy.ts
+import { withMarkdownForAgents } from 'next-agent-md'
+
+export default withMarkdownForAgents()
+
+export const config = {
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+}
+```
+
+**Next.js ≤ 15** (`middleware.ts`):
 
 ```ts
 // middleware.ts
@@ -38,7 +58,7 @@ export const config = {
 **Wrapping existing middleware:**
 
 ```ts
-// middleware.ts
+// proxy.ts (or middleware.ts on Next.js ≤ 15)
 import { withMarkdownForAgents } from 'next-agent-md'
 import { myAuthMiddleware } from './lib/auth'
 
@@ -63,7 +83,7 @@ export default withAgentMd()(nextConfig)
 The config plugin:
 
 - Injects `Vary: accept` on all non-static routes so CDNs cache HTML and Markdown separately
-- Warns at startup if `middleware.ts` is missing, with a pointer to `npx next-agent-md init`
+- Warns at startup if no `proxy.ts` or `middleware.ts` is found, with a pointer to `npx next-agent-md init`
 
 **Composing with other plugins:**
 
@@ -132,9 +152,14 @@ curl -sI -H "Accept: text/markdown" http://localhost:3000/ \
 
 ## Requirements
 
-- Next.js ≥ 13.0.0
+- Next.js ≥ 13.0.0 (tested on 15 and 16)
 - Node.js ≥ 18.0.0
-- Works in **Edge Runtime** (default for Next.js middleware)
+- Works in **Edge Runtime** (default for Next.js middleware/proxy)
+
+| Next.js version | File convention |
+| --- | --- |
+| ≤ 15 | `middleware.ts` |
+| 16+ | `proxy.ts` |
 
 ## License
 
