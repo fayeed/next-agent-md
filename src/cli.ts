@@ -3,8 +3,8 @@
  * next-agent-md CLI
  *
  * Commands:
- *   init   — scaffold middleware.ts in the current Next.js project
- *   build  — pre-generate markdown files from static pages after next build
+ *   init   - scaffold middleware.ts in the current Next.js project
+ *   build  - pre-generate markdown files from static pages after next build
  */
 import fs from 'node:fs'
 import path from 'node:path'
@@ -70,7 +70,7 @@ function runInit(): void {
       '',
       '    \x1b[36mcurl -H "Accept: text/markdown" http://localhost:3000/\x1b[0m',
       '',
-      '  Optional — also add the config plugin to next.config.ts:',
+      '  Optional - also add the config plugin to next.config.ts:',
       '',
       "    \x1b[90mimport { withAgentMd } from 'next-agent-md/config'\x1b[0m",
       '    \x1b[90mexport default withAgentMd()(nextConfig)\x1b[0m',

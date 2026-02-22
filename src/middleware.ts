@@ -59,12 +59,12 @@ async function fetchPrebuiltMarkdown(
  * 3. Returns the Markdown with an `x-markdown-tokens` token estimate header
  *
  * @example
- * // middleware.ts — zero config
+ * // middleware.ts - zero config
  * import { withMarkdownForAgents } from 'next-agent-md'
  * export default withMarkdownForAgents()
  *
  * @example
- * // middleware.ts — wrapping existing middleware
+ * // middleware.ts - wrapping existing middleware
  * import { withMarkdownForAgents } from 'next-agent-md'
  * import { myAuthMiddleware } from './lib/auth'
  * export default withMarkdownForAgents(myAuthMiddleware, { varyHeader: true })
@@ -102,7 +102,7 @@ export function withMarkdownForAgents(
 
     // ── FAST PATH: pre-built markdown file ───────────────────────────────────
     // Generated at build time by `npx next-agent-md build` for static pages.
-    // No self-fetch or HTML conversion needed — just serve the file directly.
+    // No self-fetch or HTML conversion needed - just serve the file directly.
     const prebuilt = await fetchPrebuiltMarkdown(request)
     if (prebuilt) {
       const responseHeaders = new Headers({

@@ -1,6 +1,6 @@
 # next-agent-md example
 
-This site demonstrates the `next-agent-md` middleware. AI agents requesting any page with `Accept: text/markdown` will receive clean Markdown instead of HTML — reducing token usage by \~80%.
+This site demonstrates the `next-agent-md` middleware. AI agents requesting any page with `Accept: text/markdown` will receive clean Markdown instead of HTML - reducing token usage by \~80%.
 
 Test with curl:
 

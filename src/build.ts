@@ -76,7 +76,7 @@ export async function buildStaticMarkdown(options: BuildOptions = {}): Promise<B
 
     const markdown = htmlToMarkdown(stripBoilerplate(html, stripSelectors))
 
-    // Write to outDir — nested paths become nested dirs
+    // Write to outDir, nested paths become nested dirs
     // e.g. /blog/hello → public/.well-known/markdown/blog/hello.md
     const slug = route === '/' ? 'index' : route.replace(/^\//, '')
     const mdFile = path.join(outPath, `${slug}.md`)

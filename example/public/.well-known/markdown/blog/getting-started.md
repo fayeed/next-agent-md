@@ -52,6 +52,6 @@ export default withAgentMd()(nextConfig)
 
 \`\`\`
 
-Pre-built pages are served instantly from \`public/.well-known/markdown/\` —
+Pre-built pages are served instantly from \`public/.well-known/markdown/\` -
 
 no self-fetch or conversion at request time.

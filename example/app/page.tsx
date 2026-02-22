@@ -5,15 +5,15 @@ export default function Home() {
       <p className="text-lg text-gray-600 mb-8">
         This site demonstrates the <code className="bg-gray-100 px-1 rounded">next-agent-md</code> middleware.
         AI agents requesting any page with <code className="bg-gray-100 px-1 rounded">Accept: text/markdown</code> will
-        receive clean Markdown instead of HTML — reducing token usage by ~80%.
+        receive clean Markdown instead of HTML - reducing token usage by ~80%.
       </p>
 
       <nav className="mb-10">
         <h2 className="text-xl font-semibold mb-3">Pages to try</h2>
         <ul className="space-y-2 list-disc list-inside text-gray-700">
-          <li><a href="/about" className="text-blue-600 hover:underline">/about</a> — static page</li>
-          <li><a href="/blog/hello-world" className="text-blue-600 hover:underline">/blog/hello-world</a> — static blog post</li>
-          <li><a href="/blog/getting-started" className="text-blue-600 hover:underline">/blog/getting-started</a> — static blog post</li>
+          <li><a href="/about" className="text-blue-600 hover:underline">/about</a> - static page</li>
+          <li><a href="/blog/hello-world" className="text-blue-600 hover:underline">/blog/hello-world</a> - static blog post</li>
+          <li><a href="/blog/getting-started" className="text-blue-600 hover:underline">/blog/getting-started</a> - static blog post</li>
         </ul>
       </nav>
 

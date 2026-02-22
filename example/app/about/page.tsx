@@ -20,7 +20,7 @@ export default function AboutPage() {
         <li>~80% fewer tokens compared to raw HTML</li>
         <li>No need for custom parsing or content extraction</li>
         <li>Works with any LLM or AI agent out of the box</li>
-        <li>Static pages served from pre-built files — zero conversion overhead</li>
+        <li>Static pages served from pre-built files - zero conversion overhead</li>
       </ul>
 
       <h2 className="text-2xl font-semibold mt-8 mb-3">How it works</h2>

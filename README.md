@@ -1,6 +1,6 @@
 # next-agent-md
 
-Next.js Edge Middleware that serves Markdown to AI agents — bringing [Cloudflare's Markdown for Agents](https://blog.cloudflare.com/markdown-for-agents/) pattern to any Next.js app.
+Next.js Edge Middleware that serves Markdown to AI agents, bringing [Cloudflare's Markdown for Agents](https://blog.cloudflare.com/markdown-for-agents/) pattern to any Next.js app.
 
 When an AI agent sends `Accept: text/markdown`, the middleware intercepts the request, converts the page HTML to clean Markdown, and returns it with an `x-markdown-tokens` header. This reduces token usage by ~80%.
 
@@ -23,7 +23,7 @@ This scaffolds the correct file for your Next.js version and that's it.
 > **Next.js version note**
 > Next.js 16+ renamed the middleware file convention from `middleware.ts` to `proxy.ts`.
 > The `init` command detects your version automatically and creates the right file.
-> All code examples below use `proxy.ts` — replace with `middleware.ts` if you're on Next.js ≤ 15.
+> All code examples below use `proxy.ts`, replace with `middleware.ts` if you're on Next.js ≤ 15.
 
 ## Manual setup
 
@@ -103,9 +103,9 @@ export default withAgentMd()(withAnalyzer(nextConfig))
 3. Strips boilerplate HTML: `<nav>`, `<header>`, `<footer>`, `<aside>`, `<script>`, `<style>`, etc.
 4. Converts cleaned HTML to Markdown via [`node-html-markdown`](https://github.com/crosstype/node-html-markdown)
 5. Returns a `text/markdown` response with:
-   - `x-markdown-tokens` — estimated token count (`chars / 4`)
-   - `vary: accept` — tells CDNs to cache HTML and Markdown versions separately
-   - `content-signal` — optional AI usage permissions header (see options)
+   - `x-markdown-tokens` - estimated token count (`chars / 4`)
+   - `vary: accept` - tells CDNs to cache HTML and Markdown versions separately
+   - `content-signal` - optional AI usage permissions header (see options)
 
 ## Options
 

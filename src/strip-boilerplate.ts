@@ -35,7 +35,7 @@ export function stripBoilerplate(html: string, extraTags: string[] = []): string
   const allTags = [...DEFAULT_STRIP_TAGS, ...extraTags]
 
   for (const tag of allTags) {
-    // Match the full element including content — non-greedy to avoid over-matching
+    // Match the full element including content, non-greedy to avoid over-matching
     const tagRegex = new RegExp(`<${tag}[\\s>][\\s\\S]*?<\\/${tag}>`, 'gi')
     result = result.replace(tagRegex, '')
 
@@ -53,7 +53,7 @@ export function stripBoilerplate(html: string, extraTags: string[] = []): string
     result = result.replace(roleRegex, '')
   }
 
-  // Remove HTML comments — often contain CMS/build tool artifacts
+  // Remove HTML comments, often contain CMS/build tool artifacts
   result = result.replace(/<!--[\s\S]*?-->/g, '')
 
   return result

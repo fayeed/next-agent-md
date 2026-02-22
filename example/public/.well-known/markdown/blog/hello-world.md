@@ -8,7 +8,7 @@ This is a sample blog post to demonstrate how \*\*next-agent-md\*\* serves conte
 
 When you request this page with \`Accept: text/markdown\`, the middleware returns clean Markdown
 
-instead of HTML — stripping away navigation, scripts, and boilerplate so agents only receive
+instead of HTML, stripping away navigation, scripts, and boilerplate so agents only receive
 
 the content that matters.
 
@@ -16,13 +16,13 @@ the content that matters.
 
 The middleware removes the following before converting to Markdown:
 
-\- \`<nav>\` — site navigation
+\- \`<nav>\` - site navigation
 
-\- \`<header>\` — page headers
+\- \`<header>\` - page headers
 
-\- \`<footer>\` — footers
+\- \`<footer>\` - footers
 
-\- \`<aside>\` — sidebars
+\- \`<aside>\` - sidebars
 
 \- \`<script>\` and \`<style>\` tags
 

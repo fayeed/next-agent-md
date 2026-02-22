@@ -8,17 +8,17 @@ const posts: Record<string, { title: string; date: string; content: string }> = 
 This is a sample blog post to demonstrate how **next-agent-md** serves content to AI agents.
 
 When you request this page with \`Accept: text/markdown\`, the middleware returns clean Markdown
-instead of HTML — stripping away navigation, scripts, and boilerplate so agents only receive
+instead of HTML - stripping away navigation, scripts, and boilerplate so agents only receive
 the content that matters.
 
 ## What gets stripped
 
 The middleware removes the following before converting to Markdown:
 
-- \`<nav>\` — site navigation
-- \`<header>\` — page headers
-- \`<footer>\` — footers
-- \`<aside>\` — sidebars
+- \`<nav>\` - site navigation
+- \`<header>\` - page headers
+- \`<footer>\` - footers
+- \`<aside>\` - sidebars
 - \`<script>\` and \`<style>\` tags
 - HTML comments
 
@@ -74,7 +74,7 @@ import { withAgentMd } from 'next-agent-md/config'
 export default withAgentMd()(nextConfig)
 \`\`\`
 
-Pre-built pages are served instantly from \`public/.well-known/markdown/\` —
+Pre-built pages are served instantly from \`public/.well-known/markdown/\` -
 no self-fetch or conversion at request time.
     `,
   },

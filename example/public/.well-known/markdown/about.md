@@ -9,7 +9,7 @@ When a client sends `Accept: text/markdown`, the middleware intercepts the reque
 * \~80% fewer tokens compared to raw HTML
 * No need for custom parsing or content extraction
 * Works with any LLM or AI agent out of the box
-* Static pages served from pre-built files — zero conversion overhead
+* Static pages served from pre-built files - zero conversion overhead
 
 ## How it works
 
