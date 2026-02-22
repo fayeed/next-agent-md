@@ -6,25 +6,11 @@
  *   init   — scaffold middleware.ts in the current Next.js project
  *   build  — pre-generate markdown files from static pages after next build
  */
-import { buildStaticMarkdown } from './build'
-
-const command = process.argv[2]
-
-switch (command) {
-  case 'init':
-    runInit()
-    break
-  case 'build':
-    runBuild()
-    break
-  default:
-    printHelp()
-}
-
-// ── init ──────────────────────────────────────────────────────────────────────
-
 import fs from 'node:fs'
 import path from 'node:path'
+import { buildStaticMarkdown } from './build'
+
+// ── init ──────────────────────────────────────────────────────────────────────
 
 const MIDDLEWARE_CONTENT = `import { withMarkdownForAgents } from 'next-agent-md'
 
@@ -135,6 +121,21 @@ async function runBuild(): Promise<void> {
     console.error(`\n  \x1b[31m✖  Error:\x1b[0m ${message}\n`)
     process.exit(1)
   }
+}
+
+// ── dispatch ──────────────────────────────────────────────────────────────────
+
+const command = process.argv[2]
+
+switch (command) {
+  case 'init':
+    runInit()
+    break
+  case 'build':
+    runBuild()
+    break
+  default:
+    printHelp()
 }
 
 // ── help ──────────────────────────────────────────────────────────────────────
