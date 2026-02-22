@@ -1,0 +1,56 @@
+{
+  "name": "next-agent-md",
+  "version": "0.1.0",
+  "description": "Next.js Edge Middleware that serves Markdown to AI agents — brings the Cloudflare Markdown for Agents pattern to any Next.js app",
+  "keywords": [
+    "nextjs",
+    "middleware",
+    "markdown",
+    "ai",
+    "agents",
+    "edge",
+    "llm"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm run typecheck"
+  },
+  "dependencies": {
+    "node-html-markdown": "^1.3.0"
+  },
+  "peerDependencies": {
+    "next": ">=13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "next": "^15.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
